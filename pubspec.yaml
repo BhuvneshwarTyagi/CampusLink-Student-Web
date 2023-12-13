@@ -82,11 +82,13 @@ dependencies:
   workmanager: ^0.5.1
   percent_indicator: ^4.2.3
   file_picker: ^5.5.0
-  pdfx:
-    git:
-      url: 'https://github.com/ScerIO/packages.flutter'
-      ref: '4be9de9ffed5398fd7d5f44bbb07dcd3d3f1711b'
-      path: packages/pdfx
+  flutter_rating_bar: ^4.0.1
+  date_count_down: ^3.0.0
+  pdfx: ^2.5.0
+#    git:
+#      url: 'https://github.com/ScerIO/packages.flutter'
+#      ref: '4be9de9ffed5398fd7d5f44bbb07dcd3d3f1711b'
+#      path: packages/pdfx
   chatview: ^1.3.1
   encrypt: ^5.0.3
   dotted_border: ^2.1.0

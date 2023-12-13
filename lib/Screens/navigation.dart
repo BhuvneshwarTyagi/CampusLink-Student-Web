@@ -19,25 +19,25 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:page_transition/page_transition.dart';
 import 'Assignment/assignment.dart';
+import 'Leader_board/Leader_Board.dart';
+import 'Profile_Page/profile_page.dart';
 import 'attendance.dart';
 import 'Chat_tiles/chat_list.dart';
 import 'feedbackScreen.dart';
-import 'marks.dart';
 import 'Notes/notes.dart';
 import 'Perfomance/performance.dart';
-import 'profile_page.dart';
 
-class navigation extends StatefulWidget {
-  const navigation({Key? key}) : super(key: key);
+class Navigation extends StatefulWidget {
+  const Navigation({Key? key}) : super(key: key);
 
   @override
-  State<navigation> createState() => _navigationState();
+  State<Navigation> createState() => _NavigationState();
 }
 
-class _navigationState extends State<navigation> {
-  List<Widget>All_Pages=[const Assignment(),const Notes(),const Attendance(),const Marks(), Performance()];
+class _NavigationState extends State<Navigation> {
+  List<Widget>All_Pages=[const Assignment(),const Notes(),const Attendance(),const OverAllLeaderBoard(), Performance()];
   PageController page_controller=PageController();
-  List<String>cuu_title=["Assignments","Notes","Attendeance","Marks","Performance"];
+  List<String>cuu_title=["Assignments","Notes","Feed","Leaderboard","Performance"];
   var curr_index=0;
   bool profile_update=false;
 
@@ -202,7 +202,7 @@ class _navigationState extends State<navigation> {
                     child: const chatsystem(),
                     type: PageTransitionType.rightToLeftJoined,
                     duration: const Duration(milliseconds: 350),
-                    childCurrent: const navigation(),
+                    childCurrent: const Navigation(),
                   ),
                 );
               },
@@ -266,7 +266,7 @@ class _navigationState extends State<navigation> {
                       child: const chatsystem(),
                       type: PageTransitionType.rightToLeftJoined,
                       duration: const Duration(milliseconds: 350),
-                      childCurrent: const navigation(),
+                      childCurrent: const Navigation(),
                     ),
                   );
                 },
@@ -488,7 +488,7 @@ class _navigationState extends State<navigation> {
                             child: const Profile_page(),
                             type: PageTransitionType.rightToLeftJoined,
                             duration: const Duration(milliseconds: 350),
-                            childCurrent: const navigation(),
+                            childCurrent: const Navigation(),
                           ),
                         );
 
@@ -507,7 +507,7 @@ class _navigationState extends State<navigation> {
                             child: const StudentDetails(),
                             type: PageTransitionType.rightToLeftJoined,
                             duration: const Duration(milliseconds: 350),
-                            childCurrent: const navigation(),
+                            childCurrent: const Navigation(),
                           ),
                         );
 
@@ -526,7 +526,7 @@ class _navigationState extends State<navigation> {
                             child: const feedbackQuiz(),
                             type: PageTransitionType.rightToLeftJoined,
                             duration: const Duration(milliseconds: 350),
-                            childCurrent: const navigation(),
+                            childCurrent: const Navigation(),
                           ),
                         );
                       },
@@ -547,7 +547,7 @@ class _navigationState extends State<navigation> {
                             child: const PsychometricTest(),
                             type: PageTransitionType.rightToLeftJoined,
                             duration: const Duration(milliseconds: 350),
-                            childCurrent: const navigation(),
+                            childCurrent: const Navigation(),
                           ),
                         );
                       },
@@ -699,7 +699,7 @@ class _navigationState extends State<navigation> {
                   const Assignment(),
                   const Notes(),
                   const Attendance(),
-                  const Marks(),
+                  const OverAllLeaderBoard(),
                   Performance(),
                 ],
               ),

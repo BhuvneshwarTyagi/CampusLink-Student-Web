@@ -46,7 +46,7 @@ class _MainPageState extends State<MainPage> {
             snapshot.hasData) {
           if (FirebaseAuth.instance.currentUser!.emailVerified) {
             return loaded
-                ? const navigation()
+                ? const Navigation()
                 : const loading(
                     text: "Retrieving data from the server please wait",
                   );
