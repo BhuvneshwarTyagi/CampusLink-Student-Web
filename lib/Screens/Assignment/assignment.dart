@@ -46,14 +46,14 @@ class _AssignmentState extends State<Assignment> {
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
             itemCount: subjects.length,
-            padding: EdgeInsets.only(top: size.height*0.01),
+            padding: EdgeInsets.only(top: size.height*0.005),
             itemBuilder: (context, index) {
               return Row(
                 children: [
                   Padding(
                     padding: EdgeInsets.only(
-                        left: size.width * 0.016,
-                        right: size.width * 0.016),
+                        left: size.width * 0.01,
+                        right: size.width * 0.01),
                     child: Column(
                       children: [
                         InkWell(
@@ -67,7 +67,7 @@ class _AssignmentState extends State<Assignment> {
                           },
                           child: Container(
                             height: size.height * 0.068,
-                            width: size.width * 0.2,
+                            width: size.width * 0.1,
                             decoration: BoxDecoration(
                                 color: Colors.black87,
                                 shape: BoxShape.circle,
@@ -127,8 +127,8 @@ class _AssignmentState extends State<Assignment> {
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: size.height * 0.01),
                 child: SizedBox(
-                  height: size.height * 0.69,
-                  width: size.width*0.9,
+                  height: size.height * 0.75,
+                  width: size.width*0.5,
                   child: StreamBuilder(
                     stream: FirebaseFirestore
                         .instance
@@ -146,7 +146,7 @@ class _AssignmentState extends State<Assignment> {
 
 
                           return Padding(
-                              padding: EdgeInsets.all( size.height*0.01),
+                              padding: EdgeInsets.all( size.height*0.02),
                               child:  InkWell(
                                 onTap: () async {
                                   File file=File("$systempath/Campus Link/$selectedSubject/Assignment/Assignment-${index + 1}.${snapshot.data!.data()?["Assignment-${index + 1}"]["Document-type"]}");
@@ -187,34 +187,30 @@ class _AssignmentState extends State<Assignment> {
                                   }
                                 },
                                 child: Container(
-                                  height: size.height*0.235,
-                                  width: size.width*0.9,
+                                  height: size.height*0.25,
+                                  width: size.width*0.5,
                                   decoration: BoxDecoration(
                                       color: Colors.transparent,
-                                      borderRadius:  BorderRadius.all(Radius.circular(size.width*0.068)),
+                                      borderRadius:  BorderRadius.all(Radius.circular(size.width*0.02)),
                                       border: Border.all(color: Colors.black,width: 2)
                                   ),
                                   child: Column(
                                     children: [
                                       Expanded(
-
                                         child: Container(
-
-                                          height: size.height*0.12,
-                                          width: size.width*0.9,
+                                          height: size.height*0.1,
+                                          width: size.width*0.5,
                                           decoration: BoxDecoration(
                                             color: Colors.white,
-                                            borderRadius:BorderRadius.only(topLeft: Radius.circular(size.width*0.068),topRight: Radius.circular(size.width*0.068)),
-
+                                            borderRadius:BorderRadius.only(topLeft: Radius.circular(size.width*0.02),topRight: Radius.circular(size.width*0.02)),
                                           ),
                                           child: Column(
                                             crossAxisAlignment: CrossAxisAlignment.center,
                                             children: [
-                                              SizedBox(height: size.height*0.008,),
+                                              SizedBox(height: size.height*0.01,),
                                               Row(
                                                 mainAxisAlignment: MainAxisAlignment.end,
                                                 children: [
-
                                                   CircleAvatar(
                                                     backgroundColor: Colors.transparent,
                                                     radius: size.width*0.045,
@@ -246,7 +242,6 @@ class _AssignmentState extends State<Assignment> {
                                                     fontWeight: FontWeight.w400
                                                 ),
                                               ),
-
                                             ],
                                           ),
                                         ),
