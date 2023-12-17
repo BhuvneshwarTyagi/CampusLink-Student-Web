@@ -17,12 +17,12 @@ class loading extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            SpinKitSpinningLines(color: Colors.white,size: size.width*0.3,itemCount: 6),
+            SpinKitSpinningLines(color: Colors.white,size: size.width*0.1,itemCount: 6),
             SizedBox(
               height: size.height*0.04,
             ),
             Container(
-              width: size.width*0.98,
+              width: size.width*0.2,
               padding: EdgeInsets.all(size.width*0.03),
               decoration:
               BoxDecoration(
@@ -38,13 +38,13 @@ class loading extends StatelessWidget {
               ),
               child: AutoSizeText(text,style: GoogleFonts.gfsDidot(
                 color: Colors.white,
-                fontSize: size.width*0.045
+                fontSize: size.width*0.015
               ),
                 textAlign: TextAlign.center,
                 maxLines: 2,
               ),
             ),
-            SpinKitThreeBounce(color: Colors.white,size: size.width*0.03,)
+            SpinKitThreeBounce(color: Colors.white,size: size.width*0.02,)
           ],
         ),
       ),

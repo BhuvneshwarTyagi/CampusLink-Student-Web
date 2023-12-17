@@ -103,17 +103,9 @@ class _chatsystemState extends State<chatsystem> {
           child: Container(
             width: size.width*0.18,
             height: size.height*0.1,
-            decoration: BoxDecoration(
-              borderRadius: const BorderRadius.all(Radius.circular(30)),
-              gradient: LinearGradient(
-                  colors: [
-                Colors.black.withOpacity(0.1),
-                Colors.black.withOpacity(0.1),
-              ])
-            ),
             child: Center(
               child: AutoSizeText("Please add subject first.",style: GoogleFonts.aBeeZee(
-                color: Colors.white,
+                color: Colors.black,
                 fontSize: size.height*0.035,
                 fontWeight: FontWeight.w600
               ),)
@@ -148,7 +140,9 @@ class _chatsystemState extends State<chatsystem> {
 
                         readCount= snapshot.data?.data()!["Messages"].length;
                         count= int.parse("${snapshot.data?.data()![usermodel["Email"].toString().split("@")[0]]["Read_Count"]}");
-                        markFalse();
+                        if(snapshot.data!.data()?["${usermodel["Email"].toString().split("@")[0]}"]["Active"] == true){
+                          markFalse();
+                        }
                         if(snapshot.data!.data()!["Type"] == "Personal"){
                           if(snapshot.data!.data()!["Members"][0]==usermodel["Email"]){
                             Name=snapshot.data!.data()![snapshot.data!.data()!["Members"][1].toString().split("@")[0]]["Name"];
@@ -177,6 +171,9 @@ class _chatsystemState extends State<chatsystem> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
+                              SizedBox(
+                                width:size.width*0.005,
+                              ),
                               CircleAvatar(
                                 backgroundColor: const Color.fromRGBO(86, 149, 178, 1),
                                 radius: size.width*0.015,
@@ -192,7 +189,6 @@ class _chatsystemState extends State<chatsystem> {
                                 )
                                     : null,
                               ),
-                          
                               SizedBox(width: size.width*0.005),
                               Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
@@ -230,12 +226,12 @@ class _chatsystemState extends State<chatsystem> {
                                       readCount - count>0
                                           ?
                                       CircleAvatar(
-                                        radius: size.width*0.02,
+                                        radius: size.width*0.008,
                                         backgroundColor: Colors.green,
                                         child: AutoSizeText("${readCount - count}",
                                           style: GoogleFonts.aBeeZee(
                                               color: Colors.white,
-                                              fontSize: size.height*0.035,
+                                              fontSize: size.height*0.01,
                                               fontWeight: FontWeight.w500
                                           ),
                                           textAlign: TextAlign.left,
@@ -265,6 +261,9 @@ class _chatsystemState extends State<chatsystem> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
+                              SizedBox(
+                                width:size.width*0.005,
+                              ),
                               CircleAvatar(
                                 backgroundColor: const Color.fromRGBO(86, 149, 178, 1),
                                 radius: size.width*0.015,
@@ -283,7 +282,7 @@ class _chatsystemState extends State<chatsystem> {
                           
                               SizedBox(width: size.width*0.005),
                               Column(
-                                mainAxisAlignment: MainAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.center,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   AutoSizeText(
@@ -318,12 +317,12 @@ class _chatsystemState extends State<chatsystem> {
                                       readCount - count>0
                                           ?
                                       CircleAvatar(
-                                        radius: size.width*0.02,
+                                        radius: size.width*0.008,
                                         backgroundColor: Colors.green,
                                         child: AutoSizeText("${readCount - count}",
                                           style: GoogleFonts.aBeeZee(
                                               color: Colors.white,
-                                              fontSize: size.height*0.035,
+                                              fontSize: size.height*0.01,
                                               fontWeight: FontWeight.w500
                                           ),
                                           textAlign: TextAlign.left,

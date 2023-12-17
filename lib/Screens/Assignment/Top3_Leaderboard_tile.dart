@@ -10,17 +10,17 @@ class TopThree extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size=MediaQuery.of(context).size;
     return SizedBox(
-      height: size.height * 0.32,
+      height: size.height * 0.4,
       child: Row(
         children: [
           SizedBox(
-            width: size.width * 0.07,
+            width: size.width * 0.05,
           ),
           SizedBox(
-            width: size.width * 0.214,
+            width: size.width * 0.06,
             child: Column(children: [
               SizedBox(
-                height: ((size.height * 0.12) + (size.width * 0.214)),
+                height: ((size.height * 0.18) + (size.width * 0.06)),
                 child: Stack(children: [
                   Positioned(
                     bottom: 0,
@@ -31,12 +31,12 @@ class TopThree extends StatelessWidget {
                         return snapshot.hasData ?
                         CircleAvatar(
                             backgroundColor: Colors.black,
-                            radius: size.width * 0.107,
+                            radius: size.width * 0.03,
                             child: snapshot.data!.data()?['Profile_URL'] != null && snapshot.data!.data()?['Profile_URL'] != "null"
                                 ?
                             CircleAvatar(
                                 backgroundColor: Colors.green[600],
-                                radius: size.width * 0.1,
+                                radius: size.width * 0.028,
                                 backgroundImage: NetworkImage(
                                     snapshot.data!.data()?['Profile_URL'],
                                 ),
@@ -44,7 +44,7 @@ class TopThree extends StatelessWidget {
                                 :
                             CircleAvatar(
                               backgroundColor: Colors.green[600],
-                              radius: size.width * 0.1,
+                              radius: size.width * 0.028,
                               backgroundImage: const AssetImage("assets/images/unknown.png"),
                             )
 
@@ -53,12 +53,12 @@ class TopThree extends StatelessWidget {
                     ),
                   ),
                   Positioned(
-                    top: size.height * 0.08,
-                    right: size.width*0.001,
+                    top: size.height * 0.14,
+                    right: size.width*0.018,
                     child: Transform.rotate(
                       angle: -0.3,
                       child: SizedBox(
-                          width: size.width*0.3,
+                          width: size.width*0.05,
                           height: size.height*0.05,
                           child: Image.asset("assets/images/Browncrown.png")
                       ),
@@ -72,12 +72,12 @@ class TopThree extends StatelessWidget {
               ),
               Center(
                 child: SizedBox(
-                  width: size.width * 0.2,
+                  height:size.height*0.05,
                   child: AutoSizeText(
                     data[1]["Name"]
                     ,
                     style: GoogleFonts.tiltNeon(
-                        fontSize: size.width*0.04,
+                        fontSize: size.width*0.012,
                         color: Colors.black
                     ),
 
@@ -96,14 +96,14 @@ class TopThree extends StatelessWidget {
             ),
           ),
           SizedBox(
-            width: size.width * 0.069,
+            width: size.width * 0.04,
           ),
           SizedBox(
-            width: size.width * 0.294,
+            width: size.width * 0.1,
             child: Column(
               children: [
                 SizedBox(
-                  height: ((size.height * 0.05) + (size.width * 0.294)),
+                  height: ((size.height * 0.05) + (size.width * 0.1)),
                   child: Stack(
                     children: [
                       Positioned(
@@ -115,13 +115,13 @@ class TopThree extends StatelessWidget {
                             return snapshot.hasData
                                 ?
                             CircleAvatar(
-                                radius: size.width * 0.147,
+                                radius: size.width * 0.05,
                                 backgroundColor: Colors.black,
                                 child:  snapshot.data!.data()?['Profile_URL'] != null && snapshot.data!.data()?['Profile_URL'] != "null"
                                     ?
                                 CircleAvatar(
                                   backgroundColor: Colors.green[600],
-                                  radius: size.width * 0.14,
+                                  radius: size.width * 0.048,
                                   backgroundImage: NetworkImage(snapshot.data!.data()?['Profile_URL'])
 
                                   ,
@@ -129,7 +129,7 @@ class TopThree extends StatelessWidget {
                                     :
                                 CircleAvatar(
                                   backgroundColor: Colors.green[600],
-                                  radius: size.width * 0.14,
+                                  radius: size.width * 0.048,
                                   backgroundImage: const AssetImage("assets/images/unknown.png"),
                                 )
                             )
@@ -139,10 +139,10 @@ class TopThree extends StatelessWidget {
                         ),
                       ),
                       Positioned(
-                        top: size.height * 0.018,
-                        right: size.width*0.02,
+                        top: size.height * 0.011,
+                        right: size.width*0.03,
                         child: SizedBox(
-                          width: size.width*0.3,
+                          width: size.width*0.06,
                           height: size.height*0.05,
                           child: Image.asset("assets/images/Goldcrown.png")
                         ),
@@ -155,12 +155,12 @@ class TopThree extends StatelessWidget {
                 ),
                 Center(
                   child: SizedBox(
-                    width: size.width * 0.24,
+                    height:size.height*0.05,
                     child: AutoSizeText(
                       data[0]["Name"],
                       style: GoogleFonts.tiltNeon(
                         color: Colors.black,
-                        fontSize: size.width * 0.05,
+                        fontSize: size.width * 0.012,
                       ),
                       maxLines: 2,
                       textAlign: TextAlign.center,
@@ -177,14 +177,14 @@ class TopThree extends StatelessWidget {
             ),
           ),
           SizedBox(
-            width: size.width * 0.069,
+            width: size.width * 0.04,
           ),
           SizedBox(
-            width: size.width * 0.214,
+            width: size.width * 0.06,
             child: Column(
               children: [
                 SizedBox(
-                  height: ((size.height * 0.12) + (size.width * 0.214)),
+                  height: ((size.height * 0.18) + (size.width * 0.06)),
                   child: Stack(
                     children: [
                       Positioned(
@@ -198,17 +198,17 @@ class TopThree extends StatelessWidget {
                                   ?
                               CircleAvatar(
                                 backgroundColor: Colors.black,
-                                radius: size.width * 0.107,
+                                radius: size.width * 0.03,
                                 child:  snapshot.data!.data()?['Profile_URL'] != null && snapshot.data!.data()?['Profile_URL'] != "null"
                                     ?
                                 CircleAvatar(
-                                    radius: size.width * 0.1,
+                                    radius: size.width * 0.028,
                                     backgroundColor: Colors.green[600],
                                     backgroundImage: NetworkImage(snapshot.data!.data()?['Profile_URL'])
                                 )
                                     :
                                 CircleAvatar(
-                                    radius: size.width * 0.1,
+                                    radius: size.width * 0.028,
                                     backgroundColor: Colors.green[600],
                                     backgroundImage: const AssetImage("assets/images/unknown.png")
 
@@ -221,11 +221,12 @@ class TopThree extends StatelessWidget {
                       ),
 
                       Positioned(
-                        top: size.height * 0.085,
+                        top: size.height * 0.14,
+                        left:size.width*0.018,
                         child: Transform.rotate(
                           angle: 0.3,
                           child: SizedBox(
-                              width: size.width*0.3,
+                              width: size.width*0.05,
                               height: size.height*0.05,
                               child: Image.asset("assets/images/Silvercrown.png")
                           ),
@@ -237,17 +238,19 @@ class TopThree extends StatelessWidget {
                 SizedBox(
                   height: size.height*0.01,
                 ),
-                SizedBox(
-                  width: size.width * 0.2,
-                  child: AutoSizeText(
-                    data[2]["Name"]
-                    ,
-                    style: GoogleFonts.tiltNeon(
-                      color: Colors.black,
-                      fontSize: size.width * 0.04,
+                Center(
+                  child: SizedBox(
+                    height:size.height*0.05,
+                    child: AutoSizeText(
+                      data[2]["Name"]
+                      ,
+                      style: GoogleFonts.tiltNeon(
+                        color: Colors.black,
+                        fontSize: size.width * 0.012,
+                      ),
+                      maxLines: 2,
+                      textAlign: TextAlign.center,
                     ),
-                    maxLines: 2,
-                    textAlign: TextAlign.center,
                   ),
                 ),
                 AutoSizeText(

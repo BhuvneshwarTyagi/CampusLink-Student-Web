@@ -29,14 +29,14 @@ class _AssignmentsOverAllLeaderBoardState extends State<AssignmentsOverAllLeader
   Widget build(BuildContext context) {
     Size size=MediaQuery.of(context).size;
     return Container(
-      decoration: const BoxDecoration(
-        image: DecorationImage(image: AssetImage("assets/images/celebration.gif"),fit: BoxFit.fill)
-      ),
+      // decoration: const BoxDecoration(
+      //   image: DecorationImage(image: AssetImage("assets/images/celebration.gif"),fit: BoxFit.fill)
+      // ),
       child: Column(
         children: [
           SizedBox(
-            height: size.height * 0.11,
-            width: size.width * 1,
+            height: size.height * 0.115,
+            width: size.width * 0.4,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
               itemCount: subjects.length,
@@ -46,8 +46,8 @@ class _AssignmentsOverAllLeaderBoardState extends State<AssignmentsOverAllLeader
                   children: [
                     Padding(
                       padding: EdgeInsets.only(
-                          left: size.width * 0.016,
-                          right: size.width * 0.016),
+                          left: size.width * 0.005,
+                          right: size.width * 0.005),
                       child: Column(
                         children: [
                           InkWell(
@@ -60,8 +60,8 @@ class _AssignmentsOverAllLeaderBoardState extends State<AssignmentsOverAllLeader
 
                             },
                             child: Container(
-                              height: size.height * 0.068,
-                              width: size.width * 0.2,
+                              height: size.height * 0.06,
+                              width: size.width * 0.05,
                               decoration: BoxDecoration(
                                   color: Colors.black87,
                                   shape: BoxShape.circle,
@@ -103,11 +103,11 @@ class _AssignmentsOverAllLeaderBoardState extends State<AssignmentsOverAllLeader
               },
             ),
           ),
-          const Divider(
-            height: 1.5,
+          Divider(
+            height: size.height*0.01,
             color: Colors.black87,
             indent: 8,
-            thickness: 1.5,
+            thickness: size.height*0.0025,
             endIndent: 8,
           ),
           SizedBox(
@@ -147,9 +147,9 @@ class _AssignmentsOverAllLeaderBoardState extends State<AssignmentsOverAllLeader
                           }
                         ],
                       ),
-                      SizedBox(
-                        height: size.height * 0.02,
-                      ),
+                      // SizedBox(
+                      //   height: size.height * 0.01,
+                      // ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -159,19 +159,19 @@ class _AssignmentsOverAllLeaderBoardState extends State<AssignmentsOverAllLeader
                               AutoSizeText("Average Submission/Assignment: ",
                                 style: GoogleFonts.tiltNeon(
                                     color: Colors.black,
-                                    fontSize: size.width*0.05
+                                    fontSize: size.width*0.018
                                 ),),
                               AutoSizeText("$averageSubmission",
                                 style: GoogleFonts.tiltNeon(
                                     color: Colors.green[900],
-                                    fontSize: size.width*0.06
+                                    fontSize: size.width*0.02
                                 ),),
                             ],
                           ),
                         ],
                       ),
                       SizedBox(
-                        height: size.height * 0.022,
+                        height: size.height * 0.01,
                       ),
                       Column(
                           children: [
@@ -188,7 +188,7 @@ class _AssignmentsOverAllLeaderBoardState extends State<AssignmentsOverAllLeader
                                         child: Row(
                                           children: [
                                             SizedBox(
-                                              width: size.width * 0.1,
+                                              width: size.width * 0.03,
                                               child: Center(
                                                   child: AutoSizeText(
                                                       "${index+1}",
@@ -200,7 +200,7 @@ class _AssignmentsOverAllLeaderBoardState extends State<AssignmentsOverAllLeader
                                             ),
                                             Container(
                                               height: size.height * 0.07,
-                                              width: size.width * 0.8,
+                                              width: size.width * 0.34,
                                               decoration: BoxDecoration(
                                                 border: Border.all(color: Colors.black,width: 1.5),
                                                 borderRadius: BorderRadius.all(
@@ -218,17 +218,17 @@ class _AssignmentsOverAllLeaderBoardState extends State<AssignmentsOverAllLeader
                                                         return studentsnapshot.hasData
                                                             ?
                                                         CircleAvatar(
-                                                            radius: size.width * 0.06,
+                                                            radius: size.width * 0.013,
                                                             backgroundColor: Colors.green[900],
                                                             child:  studentsnapshot.data!.data()?["Profile_URL"] !="null" && studentsnapshot.data!.data()?["Profile_URL"] != null
                                                                 ?
                                                             CircleAvatar(
-                                                              radius: size.width * 0.055,
+                                                              radius: size.width * 0.012,
                                                               backgroundImage: NetworkImage(studentsnapshot.data!.data()?["Profile_URL"]),
                                                             )
                                                                 :
                                                             CircleAvatar(
-                                                              radius: size.width * 0.055,
+                                                              radius: size.width * 0.012,
                                                               backgroundImage: const AssetImage("assets/images/unknown.png"),
                                                             )
                                                         )
@@ -246,7 +246,7 @@ class _AssignmentsOverAllLeaderBoardState extends State<AssignmentsOverAllLeader
                                                             result[index]["Name"],
                                                             style: GoogleFonts.tiltNeon(
                                                                 color: Colors.black,
-                                                                fontSize: size.width * 0.045),
+                                                                fontSize: size.width * 0.011),
                                                             maxLines: 1,
                                                             textAlign: TextAlign.left,
                                                           ),
@@ -254,7 +254,7 @@ class _AssignmentsOverAllLeaderBoardState extends State<AssignmentsOverAllLeader
                                                             result[index]["Rollnumber"],
                                                             style: GoogleFonts.tiltNeon(
                                                                 color: Colors.black,
-                                                                fontSize: size.width * 0.036),
+                                                                fontSize: size.width * 0.01),
                                                             maxLines: 1,
                                                             textAlign: TextAlign.left,
                                                           ),
@@ -288,8 +288,8 @@ class _AssignmentsOverAllLeaderBoardState extends State<AssignmentsOverAllLeader
                 )
                     :
                 SizedBox(
-                  height: size.height,
-                  width: size.width,
+                  height: size.height*0.7,
+                  width: size.width*0.4,
                   child: Center(
                     child: AutoSizeText(
                       "No Assignment assigned till now.\nPlease come back later",

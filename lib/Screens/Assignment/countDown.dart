@@ -27,7 +27,7 @@ class _CountDownTimerState extends State<CountDownTimer> {
       secondsTextShort: " S",
       style: GoogleFonts.courgette(
           color: Colors.red,
-          fontSize: size.width*0.05,
+          fontSize: size.width*0.015,
           fontWeight: FontWeight.w400
       ),
 

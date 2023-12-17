@@ -20,31 +20,20 @@ class _IndividualAssignmentLeaderboardState extends State<IndividualAssignmentLe
   Widget build(BuildContext context) {
     Size size=MediaQuery.of(context).size;
     return Container(
-      decoration: BoxDecoration(
-        image: const DecorationImage(image: AssetImage("assets/images/celebration.gif"),fit: BoxFit.fill),
-        gradient: LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-          colors: [
-            const Color.fromRGBO(86, 149, 178, 1),
-            const Color.fromRGBO(68, 174, 218, 1),
-            Colors.deepPurple.shade300
-          ],
-        ),
-      ),
-      child: Scaffold(
-        backgroundColor: Colors.transparent,
-        appBar: AppBar(
-          elevation: 0,
-          backgroundColor: Colors.transparent,
-          leading: IconButton(
-              onPressed: (){
-                Navigator.pop(context);
-              },
-              icon: const Icon(Icons.arrow_back_ios_new,color: Colors.black,),
-          ),
-        ),
-        body: StreamBuilder(
+      height:size.height*0.9,
+      width:size.width*0.4,
+      color:Colors.white,
+      // appBar: AppBar(
+      //   elevation: 0,
+      //   backgroundColor: Colors.transparent,
+      //   leading: IconButton(
+      //       onPressed: (){
+      //         Navigator.pop(context);
+      //       },
+      //       icon: const Icon(Icons.arrow_back_ios_new,color: Colors.black,),
+      //   ),
+      // ),
+      child: StreamBuilder(
             stream: FirebaseFirestore
                 .instance
                 .collection("Assignment")
@@ -112,7 +101,7 @@ class _IndividualAssignmentLeaderboardState extends State<IndividualAssignmentLe
                     Column(
                         children: [
                           SizedBox(
-                              height: size.height * 0.63,
+                              height: size.height * 0.45,
                               child: ListView.builder(
                                 physics: const NeverScrollableScrollPhysics(),
                                 itemCount: result.length,
@@ -124,7 +113,7 @@ class _IndividualAssignmentLeaderboardState extends State<IndividualAssignmentLe
                                       child: Row(
                                         children: [
                                           SizedBox(
-                                            width: size.width * 0.1,
+                                            width: size.width * 0.02,
                                             child: Center(
                                                 child: AutoSizeText(
                                                     "${index+1}",
@@ -136,7 +125,7 @@ class _IndividualAssignmentLeaderboardState extends State<IndividualAssignmentLe
                                           ),
                                           Container(
                                             height: size.height * 0.07,
-                                            width: size.width * 0.8,
+                                            width: size.width * 0.36,
                                             decoration: BoxDecoration(
                                               border: Border.all(color: Colors.black,width: 1.5),
                                               borderRadius: BorderRadius.all(
@@ -154,17 +143,17 @@ class _IndividualAssignmentLeaderboardState extends State<IndividualAssignmentLe
                                                         return studentsnapshot.hasData
                                                             ?
                                                         CircleAvatar(
-                                                            radius: size.width * 0.06,
+                                                            radius: size.width * 0.013,
                                                             backgroundColor: Colors.green[900],
                                                             child:  studentsnapshot.data!.data()?["Profile_URL"] !="null" && studentsnapshot.data!.data()?["Profile_URL"] != null
                                                                 ?
                                                             CircleAvatar(
-                                                              radius: size.width * 0.055,
+                                                              radius: size.width * 0.012,
                                                               backgroundImage: NetworkImage(studentsnapshot.data!.data()?["Profile_URL"]),
                                                             )
                                                                 :
                                                             CircleAvatar(
-                                                              radius: size.width * 0.055,
+                                                              radius: size.width * 0.012,
                                                               backgroundImage: const AssetImage("assets/images/unknown.png"),
                                                             )
                                                         )
@@ -182,7 +171,7 @@ class _IndividualAssignmentLeaderboardState extends State<IndividualAssignmentLe
                                                           result[index]["Name"],
                                                           style: GoogleFonts.tiltNeon(
                                                               color: Colors.black,
-                                                              fontSize: size.width * 0.045),
+                                                              fontSize: size.width * 0.011),
                                                           maxLines: 1,
                                                           textAlign: TextAlign.left,
                                                         ),
@@ -190,7 +179,7 @@ class _IndividualAssignmentLeaderboardState extends State<IndividualAssignmentLe
                                                           result[index]["Rollnumber"],
                                                           style: GoogleFonts.tiltNeon(
                                                               color: Colors.black,
-                                                              fontSize: size.width * 0.036),
+                                                              fontSize: size.width * 0.01),
                                                           maxLines: 1,
                                                           textAlign: TextAlign.left,
                                                         ),
@@ -215,8 +204,8 @@ class _IndividualAssignmentLeaderboardState extends State<IndividualAssignmentLe
               )
                   :
               SizedBox(
-                height: size.height,
-                width: size.width,
+                height: size.height*0.9,
+                width: size.width*0.4,
                 child: Center(
                   child: AutoSizeText(
                     "You did not uploaded a single assignment till now.\nPlease upload the assignment.",
@@ -231,7 +220,6 @@ class _IndividualAssignmentLeaderboardState extends State<IndividualAssignmentLe
               );
             }
         ),
-      ),
     );
   }
 

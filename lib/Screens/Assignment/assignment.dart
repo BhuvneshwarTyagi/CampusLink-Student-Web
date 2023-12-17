@@ -50,7 +50,6 @@ class _AssignmentState extends State<Assignment> with TickerProviderStateMixin{
               TabBar(
                 indicatorColor: Colors.black,
                 labelColor: Colors.green,
-
                 controller: _tabController,
                 onTap: (value) {
                   setState(() {
@@ -59,12 +58,12 @@ class _AssignmentState extends State<Assignment> with TickerProviderStateMixin{
                 },
                 tabs: [
                   SizedBox(
-                    height: size.height*0.05,
+                    height: size.height*0.04,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         SizedBox(
-                          width: size.width*0.1,
+                          width: size.width*0.08,
                           child: Image.asset("assets/images/assignment.png"),
                         ),
                         SizedBox(
@@ -85,7 +84,7 @@ class _AssignmentState extends State<Assignment> with TickerProviderStateMixin{
                     ),
                   ),
                   SizedBox(
-                    height: size.height*0.05,
+                    height: size.height*0.04,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
@@ -206,19 +205,8 @@ class _AssignmentState extends State<Assignment> with TickerProviderStateMixin{
       ),
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
-        child: Column(
-          children: [
-            SizedBox(
-              height: size.height*0.01,
-            ),
-
-            tabs[currTab]
-
-
-          ],
-        ),
+        child: tabs[currTab],
       ),
     );
   }
-
 }

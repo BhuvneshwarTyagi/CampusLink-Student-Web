@@ -29,8 +29,8 @@ class _AssignmentListState extends State<AssignmentList> {
     return Column(
       children: [
         SizedBox(
-          height: size.height * 0.11,
-          width: size.width * 1,
+          height: size.height * 0.115,
+          width: size.width * 0.4,
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
             itemCount: subjects.length,
@@ -40,8 +40,8 @@ class _AssignmentListState extends State<AssignmentList> {
                 children: [
                   Padding(
                     padding: EdgeInsets.only(
-                        left: size.width * 0.016,
-                        right: size.width * 0.016),
+                        left: size.width * 0.005,
+                        right: size.width * 0.005),
                     child: Column(
                       children: [
                         InkWell(
@@ -54,8 +54,8 @@ class _AssignmentListState extends State<AssignmentList> {
 
                           },
                           child: Container(
-                            height: size.height * 0.068,
-                            width: size.width * 0.2,
+                            height: size.height * 0.06,
+                            width: size.width * 0.05,
                             decoration: BoxDecoration(
                                 color: Colors.black87,
                                 shape: BoxShape.circle,
@@ -98,9 +98,9 @@ class _AssignmentListState extends State<AssignmentList> {
           ),
         ),
         Divider(
-          color: Colors.black,
+          color: Colors.black87,
           height: MediaQuery.of(context).size.height * 0.01,
-          thickness: MediaQuery.of(context).size.height * 0.003,
+          thickness: MediaQuery.of(context).size.height * 0.0025,
           endIndent: 8,
           indent: 8,
         ),
@@ -149,7 +149,7 @@ class _AssignmentListState extends State<AssignmentList> {
                   "No Data found!",
                   style: GoogleFonts.tiltNeon(
                       color: Colors.black87,
-                      fontSize: size.width*0.08
+                      fontSize: size.width*0.05
                   ),
                 ),
               )

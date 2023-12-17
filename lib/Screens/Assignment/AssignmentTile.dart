@@ -87,18 +87,17 @@ class _AssignmentTileState extends State<AssignmentTile> {
         child: Card(
           elevation: 30,
           shape: const OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.black87,width: 2),
+            borderSide: BorderSide(color: Colors.black87,width: 1),
           ),
           child: Column(
             children: [
               SizedBox(
-                width: size.width,
+                width: size.width*0.4,
                 child: Stack(
                   children: [
-
                     SizedBox(
-                      height: size.height*0.107,
-                    width: size.width,
+                      height: size.height*0.15,
+                    width: size.width*0.4,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -110,7 +109,7 @@ class _AssignmentTileState extends State<AssignmentTile> {
                               widget.subject,
                               style: GoogleFonts.courgette(
                                   color: Colors.black,
-                                  fontSize: size.height*0.02,
+                                  fontSize: size.width*0.015,
                                   fontWeight: FontWeight.w400
                               ),
                             ),
@@ -118,7 +117,7 @@ class _AssignmentTileState extends State<AssignmentTile> {
                               "Assignment : ${widget.index+1}",
                               style: GoogleFonts.courgette(
                                   color: Colors.black,
-                                  fontSize: size.height*0.02,
+                                  fontSize: size.width*0.015,
                                   fontWeight: FontWeight.w400
                               ),
                             ),
@@ -161,20 +160,19 @@ class _AssignmentTileState extends State<AssignmentTile> {
                     "Assignment : ${widget.index + 1}(${widget.docSize}MB)",
                     style: GoogleFonts.courgette(
                         color: Colors.black,
-                        fontSize: size.width*0.05,
+                        fontSize: size.width*0.015,
                         fontWeight: FontWeight.w400
                     ),
                   ),
                   subtitle: Column(
-                    crossAxisAlignment:
-                    CrossAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       AutoSizeText(
                         "Assigned on: ${widget.assignedOn.toDate()}",
                         style: GoogleFonts.tiltNeon(
                             color: Colors.black,
-                            fontSize: size.width*0.04
+                            fontSize: size.width*0.015
                         ),
                       ),
                       (widget.status == "" )
@@ -187,7 +185,7 @@ class _AssignmentTileState extends State<AssignmentTile> {
                         widget.status == "Pending" ? "Status Pending" : widget.status,
                         style: GoogleFonts.tiltNeon(
                         color: widget.status == "Pending" ? Colors.orange : widget.status == "Rejected" ? Colors.red : Colors.green,
-                        fontSize: size.width*0.04
+                        fontSize: size.width*0.015
                       ),
                       )
                       ,
@@ -209,43 +207,54 @@ class _AssignmentTileState extends State<AssignmentTile> {
                         :
                     const SizedBox(),
                     Card(
-
                       color: Colors.transparent,
                       shadowColor: Colors.transparent,
                       child: ListTile(
                         leading: SizedBox(
-                          width: size.width*0.1,
+                          height:size.height*0.05,
+                          width: size.width*0.03,
                           child: Image.asset("assets/images/leaderboard.png"),
                         ),
                         title: AutoSizeText(
                           "Leaderboard",
                           style: GoogleFonts.courgette(
                               color: Colors.black,
-                              fontSize: size.height*0.018,
+                              fontSize: size.width*0.013,
                               fontWeight: FontWeight.w400
                           ),
                         ),
                         onTap: () {
-                          Navigator.push(context,
-                              PageTransition(
+                          showDialog(
+                              context: context,
+                              builder: (context) {
+                                return Dialog(
                                   child: IndividualAssignmentLeaderboard(
                                     index: widget.index,
                                     subject: widget.subject,
                                   ),
-                                  type: PageTransitionType.bottomToTopJoined,
-                                childCurrent: AssignmentTile(
-                                  subject: widget.subject,
-                                  assignmentUrl: widget.assignmentUrl,
-                                  deadline: widget.deadline,
-                                  docSize: widget.docSize,
-                                  docType: widget.docType,
-                                  index: widget.index,
-                                  status: widget.status,
-                                  uploadTime: widget.uploadTime,
-                                  count: widget.count, assignedOn: widget.assignedOn,
-                                ),
-                              ),
+                                );
+                              }
                           );
+                          // Navigator.push(context,
+                          //   PageTransition(
+                          //     child: IndividualAssignmentLeaderboard(
+                          //       index: widget.index,
+                          //       subject: widget.subject,
+                          //     ),
+                          //     type: PageTransitionType.bottomToTopJoined,
+                          //     childCurrent: AssignmentTile(
+                          //       subject: widget.subject,
+                          //       assignmentUrl: widget.assignmentUrl,
+                          //       deadline: widget.deadline,
+                          //       docSize: widget.docSize,
+                          //       docType: widget.docType,
+                          //       index: widget.index,
+                          //       status: widget.status,
+                          //       uploadTime: widget.uploadTime,
+                          //       count: widget.count, assignedOn: widget.assignedOn,
+                          //     ),
+                          //   ),
+                          // );
                         },
                       ),
                     ),
@@ -253,9 +262,6 @@ class _AssignmentTileState extends State<AssignmentTile> {
                   ],
                 ),
               ),
-
-
-
             ],
           ),
         ),
