@@ -1,4 +1,5 @@
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:campus_link_student/Screens/Notes/NotesFront.dart';
 import 'package:campus_link_student/Screens/Notes/NotesTile.dart';
 import 'package:campus_link_student/Screens/loadingscreen.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -26,7 +27,7 @@ class _NotesListState extends State<NotesList> {
       children: [
 
         SizedBox(
-          height: size.height * 0.11,
+          height: size.height * 0.13,
           width: size.width * 1,
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
@@ -125,6 +126,7 @@ class _NotesListState extends State<NotesList> {
                     Timestamp deadline=snapshot.data!.data()?["Notes-${index+1}"]["Deadline"] ?? Timestamp(0, 0);
 
                     return NotesTile(
+                      alternatives: snapshot.data!.data()?["Notes-${index+1}"]["Alternatives"] ??[],
                       deadline: deadline,
                       selectedSubject: selectedSubject,
                       index: index,
@@ -145,10 +147,12 @@ class _NotesListState extends State<NotesList> {
                           :
                       "0",
                       videolinks: snapshot.data!.data()?["Notes-${index+1}"]["Total_Question"]==null
-                      ?
+                          ?
                       []
-                      :
+                          :
                       snapshot.data!.data()?["Notes-${index+1}"]["Additional_Link"],
+                      description: snapshot.data!.data()?["Notes-${index+1}"]["Notes_description"],
+                      userFieldExist: snapshot.data!.data()?[usermodel["Email"].toString().split("@")[0]] != null ? true : false,
                     );
 
                   },)

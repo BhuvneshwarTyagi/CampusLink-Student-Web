@@ -767,7 +767,7 @@ class _QuizScreenState extends State<QuizScreen> with WidgetsBindingObserver{
                     .collection("Notes")
                     .doc("${usermodel["University"].split(" ")[0]} ${usermodel["College"].split(" ")[0]} ${usermodel["Course"].split(" ")[0]} ${usermodel["Branch"].split(" ")[0]} ${usermodel["Year"]} ${usermodel["Section"]} ${widget.subject}")
                     .update({
-                  "${usermodel["Email"]}":{"Score":FieldValue.increment(score),"Time":FieldValue.increment(totalMinutes)},
+                  "${usermodel["Email"]}":{"Score":FieldValue.increment(score),"Time":FieldValue.increment(totalMinutes),"Quiz_attempted":FieldValue.increment(1)},
                   "Notes-${widget.notesId}.Submitted by":FieldValue.arrayUnion(["${usermodel["Email"].toString().split("@")[0]}-${usermodel["Name"]}-${usermodel["Rollnumber"]}"]),
                   "Notes-${widget.notesId}.Response.${usermodel["Email"].toString().split("@")[0]}-${usermodel["Name"]}-${usermodel["Rollnumber"]}":responseMap
                 }).whenComplete(() {
@@ -780,19 +780,6 @@ class _QuizScreenState extends State<QuizScreen> with WidgetsBindingObserver{
 
               }
 
-              /*Navigator.push(context,
-                          PageTransition(
-                              child: const loading(text: "Please wait...\n We are submiting your feedback."),
-                              type: PageTransitionType.bottomToTopJoined,
-                              childCurrent: const feedbackQuiz(),
-                              duration: const Duration(milliseconds: 200)
-                          ),
-                        );
-                        submitResponce().whenComplete(() {
-                          Navigator.pop(context);
-                          Navigator.pop(context);
-
-                        });*/
             },
               backgroundColor: Colors.transparent,
               elevation: 25,
@@ -910,9 +897,9 @@ submit(BuildContext context,String subject,int notesId) async {
       .collection("Notes")
       .doc("${usermodel["University"].split(" ")[0]} ${usermodel["College"].split(" ")[0]} ${usermodel["Course"].split(" ")[0]} ${usermodel["Branch"].split(" ")[0]} ${usermodel["Year"]} ${usermodel["Section"]} $subject")
       .update({
-    "${usermodel["Email"]}":{"Score":FieldValue.increment(score),"Time":FieldValue.increment(totalMinutes)},
-    "Notes-${notesId}.Submitted by":FieldValue.arrayUnion(["${usermodel["Email"].toString().split("@")[0]}-${usermodel["Name"]}-${usermodel["Rollnumber"]}"]),
-    "Notes-${notesId}.Response.${usermodel["Email"].toString().split("@")[0]}-${usermodel["Name"]}-${usermodel["Rollnumber"]}":responseMap
+    "${usermodel["Email"]}":{"Score":FieldValue.increment(score),"Time":FieldValue.increment(totalMinutes),"Quiz_attempted":FieldValue.increment(1)},
+    "Notes-$notesId.Submitted by":FieldValue.arrayUnion([(usermodel["Email"].toString().split("@")[0])]),
+    "Notes-$notesId.Response.${usermodel["Email"].toString().split("@")[0]}":responseMap
   }).whenComplete(() {
     _start = 0;
      minute=0;

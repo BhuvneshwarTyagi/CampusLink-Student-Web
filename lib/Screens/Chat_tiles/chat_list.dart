@@ -3,8 +3,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../Constraints.dart';
-import 'background_image.dart';
 import 'chat.dart';
+import 'new_chat.dart';
 
 class chatsystem extends StatefulWidget {
   const chatsystem({super.key});
@@ -161,8 +161,8 @@ class _chatsystemState extends State<chatsystem> {
                     InkWell(
                       onTap: () async {
 
-                        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) {
-                          return ChatPage(channel: usermodel["Message_channels"][index]);
+                        Navigator.push(context, MaterialPageRoute(builder: (context) {
+                          return ChatSection(channel: usermodel["Message_channels"][index],);
                         },));
                       },
                       child: SizedBox(
@@ -251,8 +251,8 @@ class _chatsystemState extends State<chatsystem> {
                     :
                     InkWell(
                       onTap: () async {
-                        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) {
-                          return ChatPage(channel: usermodel["Message_channels"][index]);
+                        Navigator.push(context, MaterialPageRoute(builder: (context) {
+                          return ChatSection(channel: usermodel["Message_channels"][index],);
                         },));
                       },
                       child: SizedBox(

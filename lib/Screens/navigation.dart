@@ -6,6 +6,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:campus_link_student/Constraints.dart';
 import 'package:campus_link_student/Database/database.dart';
 import 'package:campus_link_student/Registration/registration.dart';
+import 'package:campus_link_student/Screens/Achievements/achievement_page.dart';
 import 'package:campus_link_student/Screens/psycoTest.dart';
 import 'package:campus_link_student/main.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -15,12 +16,14 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_alarm_clock/flutter_alarm_clock.dart';
+import 'package:flutter_inapp_notifications/flutter_inapp_notifications.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:page_transition/page_transition.dart';
 import 'Assignment/assignment.dart';
 import 'Leader_board/Leader_Board.dart';
 import 'Profile_Page/profile_page.dart';
+import 'Sessional Marks/View Marks.dart';
 import 'attendance.dart';
 import 'Chat_tiles/chat_list.dart';
 import 'feedbackScreen.dart';
@@ -35,7 +38,7 @@ class Navigation extends StatefulWidget {
 }
 
 class _NavigationState extends State<Navigation> {
-  List<Widget>All_Pages=[const Assignment(),const Notes(),const Attendance(),const OverAllLeaderBoard(), Performance()];
+  List<Widget>All_Pages=[const Assignment(),const Notes(),NewPost(),const OverAllLeaderBoard(), Performance()];
   PageController page_controller=PageController();
   List<String>cuu_title=["Assignments","Notes","Feed","Leaderboard","Performance"];
   var curr_index=0;
@@ -286,12 +289,12 @@ class _NavigationState extends State<Navigation> {
           toolbarHeight: size.height*0.08,
           backgroundColor: Color.fromRGBO(43,43,43,1),
           title:  SizedBox(
-            width:size.width*0.75,
+            width:size.width*0.8,
             height: size.height*0.08,
             child: Row(
                     children: [
                       SizedBox(
-                        width:size.width*0.248,
+                        width:size.width*0.21,
                       ),
                       GestureDetector(
                           onTap:(){
@@ -374,7 +377,7 @@ class _NavigationState extends State<Navigation> {
                           print(curr_index);
                         },
                         child: Container(
-                          width:size.width*0.07,
+                          width:size.width*0.11,
                           height: size.height*0.08,
                           color: curr_index ==2 ? Colors.white : Colors.transparent,
                           child: Row(
@@ -386,7 +389,7 @@ class _NavigationState extends State<Navigation> {
                                 child:Image.asset("assets/images/attendance_icon.png"),
                               ),
                               AutoSizeText(
-                                  'Feed',
+                                  'Achievements',
                                   style:GoogleFonts.tiltNeon(
                                     color: curr_index ==2 ? Colors.black : Colors.white,
                                     fontSize:size.width*0.013,
@@ -472,8 +475,7 @@ class _NavigationState extends State<Navigation> {
           ),
           //centerTitle: true,
         ),
-        body:
-        Row(
+        body: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Container(
@@ -551,6 +553,44 @@ class _NavigationState extends State<Navigation> {
                                   childCurrent: const Navigation(),
                                 ),
                               );
+                            },
+                          ),
+                        ),
+                        Container(
+                          height:size.height*0.07,
+                          child: ListTile(
+                            leading: const Icon(Icons.add,color: Colors.black,),
+                            title: const Text("Sessional Marks"),
+                            onTap: () {
+                              if(usermodel["Subject"] != null){
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) {
+                                      return const ViewMarks();
+                                    },
+                                  ),
+                                );
+                              }
+                              else{
+                                InAppNotifications.instance
+                                  ..titleFontSize = 35.0
+                                  ..descriptionFontSize = 20.0
+                                  ..textColor = Colors.black
+                                  ..backgroundColor = const Color.fromRGBO(150, 150, 150, 1)
+                                  ..shadow = true
+                                  ..animationStyle = InAppNotificationsAnimationStyle.scale;
+                                InAppNotifications.show(
+                                    title: 'Error',
+                                    duration: const Duration(seconds: 2),
+                                    description: "Please add the subjects first",
+                                    leading: const Icon(
+                                      Icons.clear,
+                                      color: Colors.red,
+                                      size: 30,
+                                    ));
+                              }
+
                             },
                           ),
                         ),
@@ -730,7 +770,7 @@ class _NavigationState extends State<Navigation> {
                 children: [
                   const Assignment(),
                   const Notes(),
-                  const Attendance(),
+                  const NewPost(),
                   const OverAllLeaderBoard(),
                   Performance(),
                 ],

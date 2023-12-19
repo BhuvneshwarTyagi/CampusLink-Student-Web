@@ -70,7 +70,7 @@ class _MainPageState extends State<MainPage> {
           .then((value) {
         setState(() {
           usermodel = value.data()!;
-          if (usermodel["Subject"] == null) {
+          if (FirebaseAuth.instance.currentUser!.emailVerified && usermodel["Subject"] == null) {
             Navigator.push(
               context,
               PageTransition(
